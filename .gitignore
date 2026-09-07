@@ -97,5 +97,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
-*.anim
+Assets/AVProVideo/
 Assets/Videos/
+Assets/Samples/
+Assets/TextMesh Pro/

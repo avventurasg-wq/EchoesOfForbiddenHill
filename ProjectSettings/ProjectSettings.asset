@@ -144,7 +144,11 @@ PlayerSettings:
   bundleVersion: 0.1.0
   preloadedAssets:
   - {fileID: 0}
-  - {fileID: 6273311257566018996, guid: 6f194e99604c89b4f939c5460e904609, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 945870962245d9a4c8838664fe2ba720, type: 2}
+  - {fileID: 11400000, guid: e37c4c6faee44c84da6f1dc67f4484e5, type: 2}
+  - {fileID: 11400000, guid: 53f2b1e8d9038e54799371d74bc1ddf3, type: 2}
+  - {fileID: -4827545701611595379, guid: c866a6a6ee4644b44bb6639331cb0b58, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -176,7 +180,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 34
-  AndroidTargetSdkVersion: 34
+  AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
@@ -259,7 +263,7 @@ PlayerSettings:
   clonedFromGUID: 3c72c65a16f0acb438eed22b8b16c24a
   templatePackageId: com.unity.template.urp-blank@14.0.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 0
+  useCustomMainManifest: 1
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0

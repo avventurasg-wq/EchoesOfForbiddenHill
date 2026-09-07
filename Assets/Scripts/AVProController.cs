@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using RenderHeads.Media.AVProVideo;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -19,6 +20,10 @@ public class AVProController : MonoBehaviour
 
     [SerializeField]
     InputActionReference playVideo2;
+
+    [SerializeField]
+    bool enabledInput = false;
+
     MediaPlayer player;
 
     public AsyncOperationHandle<VideoClip> _VideoHandle { get; private set; }
@@ -28,16 +33,21 @@ public class AVProController : MonoBehaviour
         //Debug.Log(videos[0].originalPath);
         //Debug.Log($"AppData: {PERSISTENT_DATA_FOLDER.ToString()}");
         player = GetComponent<MediaPlayer>();
-        PlayVideo();
-        //playVideo1.action.performed += PlayVideo;
-        //playVideo1.action.performed += PlayVideo2;
-    }
+        //PlayVideo();
 
+        if (enabledInput)
+        {
+            playVideo1.action.performed += PlayVideo;
+            playVideo2.action.performed += PlayVideo2;
+        }
+    }
     private void OnDestroy()
     {
-        //playVideo1.action.performed -= PlayVideo;
-        //playVideo1.action.performed -= PlayVideo2;
-
+        if (enabledInput)
+        {
+            playVideo1.action.performed -= PlayVideo;
+            playVideo2.action.performed -= PlayVideo2;
+        }
         if (_VideoHandle.IsValid())
         {
             _VideoHandle.Release();
@@ -46,9 +56,12 @@ public class AVProController : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        //playVideo1.action.performed -= PlayVideo;
-        //playVideo1.action.performed -= PlayVideo2;
 
+        if (enabledInput)
+        {
+            playVideo1.action.performed -= PlayVideo;
+            playVideo2.action.performed -= PlayVideo2;
+        }
         if (_VideoHandle.IsValid())
         {
             _VideoHandle.Release();
@@ -57,29 +70,37 @@ public class AVProController : MonoBehaviour
 
     public void PlayVideo()
     {
-        StartCoroutine(LoadVideo());
+        StartCoroutine(LoadVideo(0));
     }
 
     public void PlayVideo(InputAction.CallbackContext callbackContext)
     {
-        if (_VideoHandle.IsValid())
-        {
-            _VideoHandle.Release();
-        }
+        Debug.Log("Button Pressed");
+        //if (_VideoHandle.IsValid())
+        //{
+        //    _VideoHandle.Release();
+        //}
+        StartCoroutine(LoadVideo(0));
         //Addressables.LoadAssetAsync<VideoClip>(_VideoHandle).Completed += LoadVideo;
         //videoAssetReference.LoadAssetAsync<VideoClip>().Completed += LoadVideo;
     }
 
     public void PlayVideo2(InputAction.CallbackContext callbackContext)
     {
-        player.Play();
+        StartCoroutine(LoadVideo(1));
+
     }
 
-    IEnumerator LoadVideo()
+    IEnumerator LoadVideo(int index)
     {
+        Debug.Log($"Playing Video {index}");
+        //if (_VideoHandle.IsValid())
+        //{
+        //    _VideoHandle.Release();
+        //}
         //Addressables.LoadAssetAsync<VideoClip>(_VideoHandle).Completed -= LoadVideo;
         //videoAssetReference.LoadAssetAsync<VideoClip>().Completed -= LoadVideo;
-        _VideoHandle = Addressables.LoadAssetAsync<VideoClip>(videoAddress[0]);
+        _VideoHandle = Addressables.LoadAssetAsync<VideoClip>(videoAddress[index]);
         yield return _VideoHandle;
 
         if (_VideoHandle.Status != AsyncOperationStatus.Succeeded)
@@ -89,8 +110,13 @@ public class AVProController : MonoBehaviour
         else
         {
             Debug.Log(_VideoHandle.Result.originalPath);
-            player.OpenMedia(_VideoHandle.Result.originalPath);
-            player.Play();
+            if (File.Exists(_VideoHandle.Result.originalPath))
+            {
+                Debug.Log("File found");
+            }
+            //yield return new WaitForSeconds(1);
+            //player.OpenMedia(_VideoHandle.Result.originalPath);
+            //player.Play();
         }
 
     }

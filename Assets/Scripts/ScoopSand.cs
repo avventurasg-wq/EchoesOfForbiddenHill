@@ -1,26 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction.HandGrab;
 using UnityEngine;
 
 public class ScoopSand : MonoBehaviour
 {
-    //[SerializeField]
-    //float sandSpeed;
-    //[SerializeField]
-    //float removeSpeed;
-    //[SerializeField]
-    //float removeDuration;
+    [SerializeField]
+    Transform artifact;
+
+    [SerializeField]
+    bool isScaleMode;
+
     [SerializeField]
     bool widenPileOnDig;
+
+    [SerializeField]
+    float digDepth;
+
+    [SerializeField]
+    Transform sand;
 
     [SerializeField]
     ParticleSystem sandParticle;
 
     Material material;
+    float startingY;
+    float targetDepth;
+
+    Action DiscoverArtifact;
+
     // Start is called before the first frame update
     void Start()
     {
-        material = GetComponent<MeshRenderer>().material;
+        material = sand.GetComponent<MeshRenderer>().material;
+        startingY = transform.parent.position.y;
+        targetDepth = startingY - digDepth;
+
+        DiscoverArtifact += CheckArtifact;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -53,6 +70,7 @@ public class ScoopSand : MonoBehaviour
             }
             sandParticle.transform.position = collision.contacts[0].point;
             DigSand(digger.digSpeed, digger.sandDisturbance);
+
         }
     }
 
@@ -91,8 +109,10 @@ public class ScoopSand : MonoBehaviour
                 }
                 return;
             }
+
             sandParticle.transform.position = other.ClosestPoint(transform.position);
             DigSand(digger.digSpeed, digger.sandDisturbance);
+            DiscoverArtifact?.Invoke();
         }
     }
 
@@ -111,29 +131,59 @@ public class ScoopSand : MonoBehaviour
     /// <param name="sandSpeed"> Controls the amount of sand disturbance </param>
     void DigSand(float digSpeed, float sandSpeed)
     {
-
-        if (transform.localScale.y < 0)
+        if (isScaleMode)
         {
-            transform.localScale = Vector3.zero;
-            return;
-        }
+            if (sand.localScale.y < 0)
+            {
+                sand.localScale = Vector3.zero;
+                return;
+            }
 
-        material.mainTextureOffset = new Vector2(0, material.mainTextureOffset.y + Time.deltaTime * sandSpeed);
-        
-        if (widenPileOnDig)
-        {
-            transform.localScale = new Vector3(transform.localScale.x + Time.deltaTime * digSpeed, transform.localScale.y - Time.deltaTime * digSpeed, transform.localScale.z + Time.deltaTime * digSpeed);
+
+            if (widenPileOnDig)
+            {
+                sand.localScale = new Vector3(sand.localScale.x + Time.deltaTime * digSpeed, sand.localScale.y - Time.deltaTime * digSpeed, sand.localScale.z + Time.deltaTime * digSpeed);
+            }
+            else
+            {
+                sand.localScale = new Vector3(sand.localScale.x, sand.localScale.y - Time.deltaTime * digSpeed, sand.localScale.z);
+            }
+
+            if (sand.localScale.y < 0)
+            {
+                sand.localScale = Vector3.zero;
+                gameObject.SetActive(false);
+                return;
+            }
         }
         else
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - Time.deltaTime * digSpeed, transform.localScale.z);
-        }
+            if (transform.parent.position.y < targetDepth)
+            {
+                return;
+            }
 
-        if (transform.localScale.y < 0)
+
+            transform.parent.position = new Vector3(transform.parent.position.x, transform.parent.position.y - Time.deltaTime * digSpeed * 0.5f, transform.parent.position.z);
+
+            if (transform.parent.position.y < targetDepth)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+        }
+        material.mainTextureOffset = new Vector2(0, material.mainTextureOffset.y + Time.deltaTime * sandSpeed);
+
+    }
+
+    void CheckArtifact()
+    {
+        bool inside = GetComponent<Collider>().ClosestPoint(artifact.position) == artifact.position;
+        Debug.Log($"Artifact buried: {inside}");
+        if (!inside)
         {
-            transform.localScale = Vector3.zero;
-            gameObject.SetActive(false);
-            return;
+            artifact.GetComponentInChildren<HandGrabInteractable>().enabled = true;
+            DiscoverArtifact -= CheckArtifact;
         }
     }
 }

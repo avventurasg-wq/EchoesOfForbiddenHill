@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2454aba3d2f931e4eaf672cb3c9c34d3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Sand Falling/Materials/M_VFX_URP_Coarse_Sand_Falling_01.mat
+  uploadId: 734373

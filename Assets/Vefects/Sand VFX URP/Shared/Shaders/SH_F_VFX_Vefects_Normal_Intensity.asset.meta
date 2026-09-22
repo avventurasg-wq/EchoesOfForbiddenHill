@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 576f7179907f13e439391cf40602556f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/Shared/Shaders/SH_F_VFX_Vefects_Normal_Intensity.asset
+  uploadId: 734373

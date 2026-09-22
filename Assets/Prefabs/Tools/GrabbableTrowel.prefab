@@ -454,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 1351635160665123718, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_CollisionDetection
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841621639715261435, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -464,17 +464,17 @@ PrefabInstance:
     - target: {fileID: 1876703527566624039, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.282
+      value: -0.6419
       objectReference: {fileID: 0}
     - target: {fileID: 1876703527566624039, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.707
+      value: 0.935
       objectReference: {fileID: 0}
     - target: {fileID: 1876703527566624039, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.598
+      value: -1.735
       objectReference: {fileID: 0}
     - target: {fileID: 1876703527566624039, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef19d1f5af06ab043882f5a804ba63df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digSpeed: 0.01
+  digSpeed: 0.05
   sandDisturbance: 0.1
   _leftHandGrabInteractable: {fileID: 7761325930987136383}
   _rightHandGrabInteractable: {fileID: 6130726294215922529}

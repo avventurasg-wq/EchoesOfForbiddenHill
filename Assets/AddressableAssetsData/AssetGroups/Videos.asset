@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 11b5e82f4bbbf1042b5b0313f64af4c5
   m_SerializeEntries:
-  - m_GUID: ecb1d62197fb75f4caa67c35f5094088
-    m_Address: MayanoTopGun
+  - m_GUID: e7b05bf6167ffd44aa0731b029bbfc5a
+    m_Address: King
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

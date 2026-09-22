@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Trowel_Mat
+    second: {fileID: 2100000, guid: 641f6ea381e76c844a80744a3d8ae822, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Trowel_Mat1
     second: {fileID: 2100000, guid: 641f6ea381e76c844a80744a3d8ae822, type: 2}
   - first:

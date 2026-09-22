@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f499f94d43319a14185c18dbc0226eda
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Rocks/Materials/M_VFX_Rock_Desert_Small_01.mat
+  uploadId: 734373

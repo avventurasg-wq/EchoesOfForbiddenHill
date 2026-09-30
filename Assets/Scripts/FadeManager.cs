@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class FadeManager : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class FadeManager : MonoBehaviour
 
     [SerializeField]
     Material _fadeMaterial;
+
+    [SerializeField]
+    Volume _fadeVolume;
 
     [SerializeField]
     float _fadeDuration;
@@ -33,6 +38,8 @@ public class FadeManager : MonoBehaviour
     #endregion
 
     #region Properties
+    private ColorParameter _colorParameter = null;
+
     Coroutine _fadeCoroutine;
     Coroutine _fadeAudioCoroutine;
 
@@ -54,7 +61,19 @@ public class FadeManager : MonoBehaviour
             return;
         }
         Instance = this;
-        _fadeMaterial.color = Color.clear;
+
+        _fadeVolume.weight = 0f;
+        //_fadeMaterial.color = Color.clear;
+        //if (_fadeVolume.profile.TryGet(out ColorAdjustments _colorAdjustments))
+        //{
+        //    _colorParameter = _colorAdjustments.colorFilter;
+        //    _colorParameter.value = Color.white;
+        //}
+        //else
+        //{
+        //    Debug.LogError($"{gameObject.name}: No ColorParameter found for this volume");
+        //}
+
         if (isDebugging)
         {
             fadeBlack.action.performed += FadeToBlack;
@@ -69,7 +88,9 @@ public class FadeManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        _fadeMaterial.color = Color.clear;
+        _fadeVolume.weight = 0f;
+        //_colorParameter.value = Color.white;
+        //_fadeMaterial.color = Color.clear;
         if (isDebugging)
         {
             fadeBlack.action.performed -= FadeToBlack;
@@ -79,7 +100,9 @@ public class FadeManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        _fadeMaterial.color = Color.clear;
+        _fadeVolume.weight = 0f;
+        //_colorParameter.value = Color.white;
+        //_fadeMaterial.color = Color.clear;
         if (isDebugging)
         {
             fadeBlack.action.performed -= FadeToBlack;
@@ -120,11 +143,16 @@ public class FadeManager : MonoBehaviour
         float elapsed = 0;
         while (elapsed < _fadeDuration)
         {
-            _fadeMaterial.color = Color.Lerp(Color.clear, Color.black, elapsed / _fadeDuration);
+            _fadeVolume.weight = Mathf.Lerp(0f, 1f, elapsed / _fadeDuration);
+            //_colorParameter.Interp(Color.clear, Color.black, elapsed / _fadeDuration);
+
+            //_fadMaterial.color = Color.Lerp(Color.clear, Color.black, elapsed / _fadeDuration);
             elapsed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        _fadeMaterial.color = Color.black;
+        _fadeVolume.weight = 1f;
+        //_colorParameter.value = Color.black;
+        //_fadeMaterial.color = Color.black;
         _environment.SetActive(false);
         OnFadeBlackFinished?.Invoke();
         _fadeCoroutine = null;
@@ -161,11 +189,15 @@ public class FadeManager : MonoBehaviour
         float elapsed = 0;
         while (elapsed < 1)
         {
-            _fadeMaterial.color = Color.Lerp(Color.black, Color.clear, elapsed / _fadeDuration);
+            _fadeVolume.weight = Mathf.Lerp(1f, 0f, elapsed / _fadeDuration);
+            //_colorParameter.Interp(Color.black, Color.clear, elapsed / _fadeDuration);
+            //_fadeMaterial.color = Color.Lerp(Color.black, Color.clear, elapsed / _fadeDuration);
             elapsed += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        _fadeMaterial.color = Color.clear;
+        _fadeVolume.weight = 0f;
+        //_colorParameter.value = Color.clear;
+        //_fadeMaterial.color = Color.clear;
         OnFadeWhiteFinished?.Invoke();
 
         _fadeCoroutine = null;
@@ -218,19 +250,28 @@ public class FadeManager : MonoBehaviour
         _fadeAudioCoroutine = null;
     }
 
+    /// <summary>
+    /// Set environment active after fade black
+    /// </summary>
     public void ShowEnvironment()
     {
         OnFadeBlackFinished -= ShowEnvironment;
         _environment.SetActive(true);
-        OnFadeWhiteFinished += RestoreIndicators;
+        //OnFadeWhiteFinished += RestoreIndicators;
         FadeToWhite(true);
     }
 
+    /// <summary>
+    /// Set environment inactive after fade black
+    /// </summary>
     public void HideEnvironment()
     {
         OnFadeBlackFinished -= HideEnvironment;
         _environment.SetActive(false);
     }
+
+    #region Obsolete
+    [Obsolete]
     public void HideIndicators()
     {
         OnFadeBlackStarted -= HideIndicators;
@@ -240,6 +281,8 @@ public class FadeManager : MonoBehaviour
             storage.SetActiveState(false);
         }
     }
+
+    [Obsolete]
     public void RestoreIndicators()
     {
         OnFadeWhiteFinished -= RestoreIndicators;
@@ -248,6 +291,8 @@ public class FadeManager : MonoBehaviour
             storage.SetActiveState(activeStorages[storage]);
         }
     }
+    #endregion
+
     #endregion
 
     #region Debugging
@@ -267,7 +312,7 @@ public class FadeManager : MonoBehaviour
             return;
         }
         OnFadeWhiteStarted += ShowEnvironment;
-        OnFadeWhiteFinished += RestoreIndicators;
+        //OnFadeWhiteFinished += RestoreIndicators;
         _fadeCoroutine = StartCoroutine(FadeWhite());
     }
     #endregion

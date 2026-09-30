@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4866cd0ee936bd74793cbe321d04a019
+guid: afc6e2df16336b9428de0f250b3a39f3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Vase_Mat
-    second: {fileID: 2100000, guid: e8f99b4e366b9914d83cef308868e3d6, type: 2}
+      name: terrain top
+    second: {fileID: 2100000, guid: bbfce280784df894c86e1e53059f7da8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

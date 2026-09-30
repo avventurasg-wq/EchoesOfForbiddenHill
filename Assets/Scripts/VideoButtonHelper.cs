@@ -7,13 +7,19 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class VideoButtonHelper : MonoBehaviour
 {
+    #region Serializables
     [SerializeField]
     Image filler;
     [SerializeField]
     string videoPath;
+    #endregion
 
+    #region Properties
     bool isHovered;
     bool isReleased;
+    #endregion
+
+    #region Monobehaviours
     // Start is called before the first frame update
     void Start()
     {
@@ -42,10 +48,15 @@ public class VideoButtonHelper : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Public Methods
+    /// <summary>
+    /// Trigger event after button is hovered for a duration
+    /// </summary>
     public void TriggerFilledEvent()
     {
-        FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
+        //FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
         FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingVideo;
         VideoManager.Instance.SetVideoPath(videoPath);
@@ -54,16 +65,11 @@ public class VideoButtonHelper : MonoBehaviour
 
     public void TriggerFilledEvent(InputAction.CallbackContext context)
     {
-        FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
+        //FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
         FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingVideo;
         VideoManager.Instance.SetVideoPath(videoPath);
         FadeManager.Instance.FadeToBlack(true);
     }
-
-    public void SetHover(bool active)
-    {
-        isHovered = active;
-        isReleased = !active;
-    }
+    #endregion
 }

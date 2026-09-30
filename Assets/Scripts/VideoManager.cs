@@ -26,6 +26,7 @@ public class VideoManager : MonoBehaviour
     public AsyncOperationHandle<VideoClip> _VideoHandle { get; private set; }
     #endregion
 
+    #region Monobehaviours
     private void Awake()
     {
         if (Instance != null)
@@ -52,13 +53,20 @@ public class VideoManager : MonoBehaviour
             _VideoHandle.Release();
         }
     }
+    #endregion
 
+    /// <summary>
+    /// Play video
+    /// </summary>
     void PlayVideo()
     {
         FadeManager.Instance.OnFadeWhiteFinished -= PlayVideo;
         videoPlayer.Play();
     }
 
+    /// <summary>
+    /// Loads video
+    /// </summary>
     public void StartLoadingVideo()
     {
         if (videoLoading)
@@ -98,6 +106,9 @@ public class VideoManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops video
+    /// </summary>
     public void EndVideo()
     {
         FadeManager.Instance.OnFadeBlackFinished -= EndVideo;
@@ -105,6 +116,10 @@ public class VideoManager : MonoBehaviour
         videoPlayer.Stop();
     }
 
+    /// <summary>
+    /// Switch to excavation environment
+    /// </summary>
+    /// <param name="source"></param>
     public void ReturnToSite(VideoPlayer source)
     {
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
@@ -119,6 +134,10 @@ public class VideoManager : MonoBehaviour
         FadeManager.Instance.FadeToBlack(true);
     }
 
+    /// <summary>
+    /// Set video to load
+    /// </summary>
+    /// <param name="path"></param>
     public void SetVideoPath(string path)
     {
         videoPath = path;

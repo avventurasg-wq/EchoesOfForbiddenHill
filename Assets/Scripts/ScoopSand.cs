@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ScoopSand : MonoBehaviour
 {
+    #region Serializables
     [SerializeField]
     Transform artifact;
 
@@ -23,13 +24,17 @@ public class ScoopSand : MonoBehaviour
 
     [SerializeField]
     ParticleSystem sandParticle;
+    #endregion
 
+    #region Properties
     Material material;
     float startingY;
     float targetDepth;
+    #endregion
 
     Action DiscoverArtifact;
 
+    #region Monobehaviour
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +92,7 @@ public class ScoopSand : MonoBehaviour
         if (other.transform.tag == "Digger")
         {
             ExcavationTool digger = other.transform.GetComponentInParent<ExcavationTool>();
-            Debug.Log($"Digging {digger.isGrabbed}");
+            //Debug.Log($"Digging {digger.isGrabbed}");
             if (!digger.isGrabbed)
             {
                 return;
@@ -100,7 +105,7 @@ public class ScoopSand : MonoBehaviour
         if (other.transform.tag == "Digger")
         {
             ExcavationTool digger = other.transform.GetComponentInParent<ExcavationTool>();
-            Debug.Log($"Digging {digger.isGrabbed}");
+            //Debug.Log($"Digging {digger.isGrabbed}");
             if (!digger.isGrabbed)
             {
                 if (sandParticle.isPlaying)
@@ -110,7 +115,7 @@ public class ScoopSand : MonoBehaviour
                 return;
             }
 
-            sandParticle.transform.position = other.ClosestPoint(transform.position);
+            //sandParticle.transform.position = other.ClosestPoint(transform.position);
             DigSand(digger.digSpeed, digger.sandDisturbance);
             DiscoverArtifact?.Invoke();
         }
@@ -123,7 +128,9 @@ public class ScoopSand : MonoBehaviour
             sandParticle.Stop();
         }
     }
+    #endregion
 
+    #region Private Methods
     /// <summary>
     /// Reduce sand pile size
     /// </summary>
@@ -176,6 +183,9 @@ public class ScoopSand : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Checks if target point is still buried
+    /// </summary>
     void CheckArtifact()
     {
         bool inside = GetComponent<Collider>().ClosestPoint(artifact.position) == artifact.position;
@@ -186,4 +196,5 @@ public class ScoopSand : MonoBehaviour
             DiscoverArtifact -= CheckArtifact;
         }
     }
+    #endregion
 }

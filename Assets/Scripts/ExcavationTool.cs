@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Oculus.Interaction;
@@ -7,16 +8,12 @@ using static Oculus.Interaction.AudioPhysics;
 
 public class ExcavationTool : MonoBehaviour, ITransformer
 {
+    #region Serializables
     [SerializeField]
     public float digSpeed;
     [SerializeField]
     public float sandDisturbance;
 
-    Rigidbody rb;
-    public bool isGrabbed { get; set; } = false;
-
-    Vector3 lastGrabbedPos;
-    Quaternion lastGrabbedRot;
     [SerializeField]
     private HandGrabInteractable _leftHandGrabInteractable;
     [SerializeField]
@@ -26,6 +23,15 @@ public class ExcavationTool : MonoBehaviour, ITransformer
     private Rigidbody _rigidbody;
     [SerializeField]
     private AnimationCurve _collisionStrength;
+
+    #endregion
+
+    #region Properties
+    Rigidbody rb;
+    public bool isGrabbed { get; set; } = false;
+
+    Vector3 lastGrabbedPos;
+    Quaternion lastGrabbedRot;
 
     //private const float _timeBetweenCollisions = 0.1f;
     //private WaitForSeconds _hapticsWait = new WaitForSeconds(0.1f);
@@ -39,11 +45,12 @@ public class ExcavationTool : MonoBehaviour, ITransformer
     private IGrabbable _grabbable;
     private Pose _grabDeltaInLocalSpace;
 
+    #endregion
 
-
+    #region Monobehaviours
     private void Awake()
     {
-        SetLastGrabTransform();
+        //SetLastGrabTransform();
         if (GetComponent<Rigidbody>())
         {
             rb = GetComponent<Rigidbody>();
@@ -81,24 +88,26 @@ public class ExcavationTool : MonoBehaviour, ITransformer
             _rightHandGrabInteractable.WhenStateChanged -= HandleRightHandGrabInteractableStateChanged;
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Respawn")
-        {
-            //rigidbody.useGravity = false;
-            ResetVelocity();
-            transform.position = lastGrabbedPos;
-            transform.rotation = lastGrabbedRot;
-            //rigidbody.useGravity = true;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "Respawn")
+    //    {
+    //        //rigidbody.useGravity = false;
+    //        ResetVelocity();
+    //        transform.position = lastGrabbedPos;
+    //        transform.rotation = lastGrabbedRot;
+    //        //rigidbody.useGravity = true;
+    //    }
+    //}
+    #endregion
+
     #region ITransformer
     private void HandleLeftHandGrabInteractableStateChanged(InteractableStateChangeArgs stateChange)
     {
         if (stateChange.NewState == InteractableState.Select)
         {
             _activeController |= OVRInput.Controller.LTouch;
-            SetLastGrabTransform();
+            //SetLastGrabTransform();
             isGrabbed = true;
         }
         else if (stateChange.PreviousState == InteractableState.Select)
@@ -113,7 +122,7 @@ public class ExcavationTool : MonoBehaviour, ITransformer
         if (stateChange.NewState == InteractableState.Select)
         {
             _activeController |= OVRInput.Controller.RTouch;
-            SetLastGrabTransform();
+            //SetLastGrabTransform();
             isGrabbed = true;
         }
         else if (stateChange.PreviousState == InteractableState.Select)
@@ -186,6 +195,8 @@ public class ExcavationTool : MonoBehaviour, ITransformer
 
     }
     #endregion
+
+    [Obsolete("Use snap interactor timeout to reset position")]
     public void SetLastGrabTransform()
     {
         lastGrabbedPos = transform.position;

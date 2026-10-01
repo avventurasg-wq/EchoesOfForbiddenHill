@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 637e346f61d9573439c315d574821348
+guid: 78bd9698e118dde45b3e7bb36f8aabbd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: openPBR_shader1
-    second: {fileID: 2100000, guid: b330a0dec36821540a73fd2d0c37d39f, type: 2}
+      name: Glass
+    second: {fileID: 2100000, guid: b3f6c5913d4d93942b8c10482ec4be62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lamp
+    second: {fileID: 2100000, guid: 8016f34b3aaa9c24c94099a2c85f5237, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -37,7 +42,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

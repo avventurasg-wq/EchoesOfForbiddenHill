@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 637e346f61d9573439c315d574821348
+guid: d1a5ca70c7056ee46ab354bf1735149e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: openPBR_shader1
-    second: {fileID: 2100000, guid: b330a0dec36821540a73fd2d0c37d39f, type: 2}
+      name: ladder
+    second: {fileID: 2100000, guid: cb61e3659c162ce46a4d7baad95d655e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -37,7 +37,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

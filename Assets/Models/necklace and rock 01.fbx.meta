@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 637e346f61d9573439c315d574821348
+guid: 7708b2023135e2d44b5ce8fe833fa7df
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: openPBR_shader1
-    second: {fileID: 2100000, guid: b330a0dec36821540a73fd2d0c37d39f, type: 2}
+      name: necklace
+    second: {fileID: 2100000, guid: 4aefdc98a8f06a0459df88dc7905b961, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rock decimate
+    second: {fileID: 2100000, guid: 191edd8bc3def704f9348d4327b2ab2e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

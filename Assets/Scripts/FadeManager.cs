@@ -153,7 +153,6 @@ public class FadeManager : MonoBehaviour
         _fadeVolume.weight = 1f;
         //_colorParameter.value = Color.black;
         //_fadeMaterial.color = Color.black;
-        _environment.SetActive(false);
         OnFadeBlackFinished?.Invoke();
         _fadeCoroutine = null;
     }

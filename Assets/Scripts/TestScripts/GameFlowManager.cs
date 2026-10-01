@@ -58,7 +58,9 @@ public class GameFlowManager : MonoBehaviour
             SetState(GameState.Playing);
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
-        SetState(GameState.Playing);
+#if UNITY_EDITOR
+        DynamicGI.UpdateEnvironment();
+#endif
 
         if (FadeManager.Instance != null)
         {

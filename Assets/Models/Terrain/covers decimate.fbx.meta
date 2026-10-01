@@ -39,6 +39,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: cover decimate
     second: {fileID: 2100000, guid: 600b109915c67dc498d0cba30099dcac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cover mat
+    second: {fileID: 2100000, guid: 600b109915c67dc498d0cba30099dcac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

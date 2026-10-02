@@ -15,17 +15,17 @@ public class EndTrigger : MonoBehaviour
     #endregion
 
     #region Monobehaviours
-    private void OnEnable()
-    {
-        handGrabInteractable.WhenStateChanged += HandleStateChanged;
-        grabInteractable.WhenStateChanged += HandleStateChanged;
-    }
+    //private void OnEnable()
+    //{
+    //    handGrabInteractable.WhenStateChanged += HandleStateChanged;
+    //    grabInteractable.WhenStateChanged += HandleStateChanged;
+    //}
 
-    private void OnDisable()
-    {
-        handGrabInteractable.WhenStateChanged -= HandleStateChanged;
-        grabInteractable.WhenStateChanged -= HandleStateChanged;
-    }
+    //private void OnDisable()
+    //{
+    //    handGrabInteractable.WhenStateChanged -= HandleStateChanged;
+    //    grabInteractable.WhenStateChanged -= HandleStateChanged;
+    //}
     #endregion
 
     #region Private Methods
@@ -38,7 +38,16 @@ public class EndTrigger : MonoBehaviour
         {
             return;
         }
+        //Debug.Log("restart");
         GameFlowManager.Instance.RestartGame();
+    }
+    #endregion
+
+    #region Public Method
+    public void RestartGame()
+    {
+        GameFlowManager.Instance.RestartGame();
+        //Debug.Log("restart");
     }
     #endregion
 }

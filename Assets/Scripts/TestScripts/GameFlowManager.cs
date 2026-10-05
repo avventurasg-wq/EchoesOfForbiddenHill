@@ -70,7 +70,7 @@ public class GameFlowManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Current State: " + currentState);
+        //Debug.Log("Current State: " + currentState);
         if (Keyboard.current != null && Keyboard.current.digit0Key.wasPressedThisFrame)
         {
             Debug.Log("[Flow] Debug key 0 pressed");

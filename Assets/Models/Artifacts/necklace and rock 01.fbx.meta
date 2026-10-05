@@ -12,6 +12,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: necklace necklace
+    second: {fileID: 2100000, guid: 4aefdc98a8f06a0459df88dc7905b961, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: necklace rock
+    second: {fileID: 2100000, guid: aa3a36370c0021b40b27b7d63b327e40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: rock decimate
     second: {fileID: 2100000, guid: 191edd8bc3def704f9348d4327b2ab2e, type: 2}
   materials:

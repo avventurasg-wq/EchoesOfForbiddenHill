@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 65a9c8286d7483644b77d23bb9542bf2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Sand Falling/Materials/M_VFX_URP_Lit_MV_Sand_Falling_Ceiling_02.mat
+  uploadId: 734373

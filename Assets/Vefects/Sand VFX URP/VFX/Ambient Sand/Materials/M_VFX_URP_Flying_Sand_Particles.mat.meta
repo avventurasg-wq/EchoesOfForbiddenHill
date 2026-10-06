@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 72265dd3a184ec94f9c323651f18a2b1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Ambient Sand/Materials/M_VFX_URP_Flying_Sand_Particles.mat
+  uploadId: 734373

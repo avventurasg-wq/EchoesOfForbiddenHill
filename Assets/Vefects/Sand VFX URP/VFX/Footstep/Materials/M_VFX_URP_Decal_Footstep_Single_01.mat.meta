@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fdf6f5deeb964ae4bbdf6a8767080a88
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Footstep/Materials/M_VFX_URP_Decal_Footstep_Single_01.mat
+  uploadId: 734373

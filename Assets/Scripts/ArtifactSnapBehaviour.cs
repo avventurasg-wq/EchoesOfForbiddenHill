@@ -83,7 +83,8 @@ public class ArtifactSnapBehaviour : MonoBehaviour
         snapInteractable.SelectingInteractors.Single().transform.parent.GetComponent<Rigidbody>().isKinematic = true;
         //videoButton.SetActive(true);
         //targetInteractor.transform.parent.GetComponentInChildren<HandGrabInteractable>().enabled = false;
-        PlayVideo();
+        artifactPanel.SetActive(true);
+        //PlayVideo();
     }
 
 

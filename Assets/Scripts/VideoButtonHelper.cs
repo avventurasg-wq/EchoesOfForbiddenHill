@@ -57,6 +57,10 @@ public class VideoButtonHelper : MonoBehaviour
     public void TriggerVideo()
     {
         //FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
+        if (string.IsNullOrEmpty(videoPath))
+        {
+            return;
+        }
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
         FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingVideo;
         VideoManager.Instance.SetVideoPath(videoPath);

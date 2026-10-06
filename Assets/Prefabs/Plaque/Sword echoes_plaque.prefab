@@ -681,6 +681,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6810671049772626185}
+    - targetCorrespondingSourceObject: {fileID: 1299510413217003831, guid: 578194ee10ccbf447b755128be314e31,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6281366258391735386}
   m_SourcePrefab: {fileID: 100100000, guid: 578194ee10ccbf447b755128be314e31, type: 3}
 --- !u!4 &2529479911219041480 stripped
 Transform:
@@ -852,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableView: {fileID: 0}
+  _interactableView: {fileID: 7545409156447676141}
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
@@ -861,7 +865,19 @@ MonoBehaviour:
       m_Calls: []
   _whenSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6281366258391735386}
+        m_TargetAssemblyTypeName: VideoButtonHelper, Assembly-CSharp
+        m_MethodName: TriggerVideo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _whenUnselect:
     m_PersistentCalls:
       m_Calls: []
@@ -877,6 +893,20 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6281366258391735386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934162810253576724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838bdb763b6d8ad4db47f15789b636c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filler: {fileID: 0}
+  videoPath: 
 --- !u!4 &5533083139200272786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1704251672702502223, guid: 578194ee10ccbf447b755128be314e31,

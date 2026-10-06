@@ -32,6 +32,7 @@ TagManager:
   - QDSUILineDrawing
   - QDSUIToggleThumbnail
   - Digger
+  - Environment
   layers:
   - Default
   - TransparentFX

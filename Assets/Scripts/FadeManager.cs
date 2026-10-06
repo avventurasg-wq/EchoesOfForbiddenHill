@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+
+
 public class FadeManager : MonoBehaviour
 {
     #region Singleton
@@ -50,6 +52,8 @@ public class FadeManager : MonoBehaviour
 
     ArtifactSnapBehaviour[] storages;
     Dictionary<ArtifactSnapBehaviour, bool> activeStorages = new Dictionary<ArtifactSnapBehaviour, bool>();
+
+    public GameObject[] hiddenEnvironment;
     #endregion
 
     #region Monobehaviour
@@ -62,7 +66,10 @@ public class FadeManager : MonoBehaviour
         }
         Instance = this;
 
-        _fadeVolume.weight = 0f;
+        if (_fadeVolume != null)
+        {
+            _fadeVolume.weight = 0f;
+        }
         //_fadeMaterial.color = Color.clear;
         //if (_fadeVolume.profile.TryGet(out ColorAdjustments _colorAdjustments))
         //{
@@ -255,8 +262,17 @@ public class FadeManager : MonoBehaviour
     public void ShowEnvironment()
     {
         OnFadeBlackFinished -= ShowEnvironment;
-        _environment.SetActive(true);
-        //OnFadeWhiteFinished += RestoreIndicators;
+        if (hiddenEnvironment != null)
+        {
+            foreach (GameObject env in hiddenEnvironment)
+            {
+                if (env != null)          // could be destroyed if Main reloaded
+                {
+                    env.SetActive(true);
+                }
+            }
+            hiddenEnvironment = null;
+        }
         FadeToWhite(true);
     }
 
@@ -266,7 +282,11 @@ public class FadeManager : MonoBehaviour
     public void HideEnvironment()
     {
         OnFadeBlackFinished -= HideEnvironment;
-        _environment.SetActive(false);
+        hiddenEnvironment = GameObject.FindGameObjectsWithTag("Environment");
+        foreach (GameObject env in hiddenEnvironment)
+        {
+            env.SetActive(false);
+        }
     }
 
     #region Obsolete

@@ -23,30 +23,30 @@ public class VideoButtonHelper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isHovered)
-        {
-            filler.fillAmount += Time.deltaTime;
-            if (filler.fillAmount >= 1)
-            {
-                TriggerFilledEvent();
-                isHovered = false;
-            }
-        }
-        else if (isReleased)
-        {
-            filler.fillAmount -= Time.deltaTime;
-            if (filler.fillAmount < 0)
-            {
-                filler.fillAmount = 0;
-                isReleased = false;
-            }
-        }
+        // if (isHovered)
+        // {
+        //     filler.fillAmount += Time.deltaTime;
+        //     if (filler.fillAmount >= 1)
+        //     {
+        //         TriggerFilledEvent();
+        //         isHovered = false;
+        //     }
+        // }
+        // else if (isReleased)
+        // {
+        //     filler.fillAmount -= Time.deltaTime;
+        //     if (filler.fillAmount < 0)
+        //     {
+        //         filler.fillAmount = 0;
+        //         isReleased = false;
+        //     }
+        // }
     }
     #endregion
 
@@ -54,7 +54,7 @@ public class VideoButtonHelper : MonoBehaviour
     /// <summary>
     /// Trigger event after button is hovered for a duration
     /// </summary>
-    public void TriggerFilledEvent()
+    public void TriggerVideo()
     {
         //FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
@@ -62,6 +62,8 @@ public class VideoButtonHelper : MonoBehaviour
         VideoManager.Instance.SetVideoPath(videoPath);
         FadeManager.Instance.FadeToBlack(true);
     }
+
+
 
     public void TriggerFilledEvent(InputAction.CallbackContext context)
     {
@@ -71,5 +73,11 @@ public class VideoButtonHelper : MonoBehaviour
         VideoManager.Instance.SetVideoPath(videoPath);
         FadeManager.Instance.FadeToBlack(true);
     }
+
+    public void OnPressed()
+    {
+        Debug.Log("OnPressed called");
+    }
+
     #endregion
 }

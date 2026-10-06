@@ -27,3 +27,4 @@ public class ArtifactManager : MonoBehaviour
         Instance = this;
     }
 }
+

@@ -18,11 +18,17 @@ public class VideoManager : MonoBehaviour
     GameObject videoMesh;
     [SerializeField]
     VideoPlayer videoPlayer;
+
+    [SerializeField]
+    GameObject skipButton;
     #endregion
 
     #region Properties
     string videoPath;
     bool videoLoading;
+
+    bool isVideoTriggered = false;
+    public bool IsVideoTriggered => isVideoTriggered;
     public AsyncOperationHandle<VideoClip> _VideoHandle { get; private set; }
     #endregion
 
@@ -55,6 +61,14 @@ public class VideoManager : MonoBehaviour
     }
     #endregion
 
+    #region public Methods
+    /// <summary>
+    /// reset video
+    /// </summary>
+    public void ResetVideoState()
+    {
+        isVideoTriggered = false;
+    }
     /// <summary>
     /// Play video
     /// </summary>
@@ -62,6 +76,7 @@ public class VideoManager : MonoBehaviour
     {
         FadeManager.Instance.OnFadeWhiteFinished -= PlayVideo;
         videoPlayer.Play();
+        skipButton.SetActive(true);
     }
 
     /// <summary>
@@ -78,6 +93,63 @@ public class VideoManager : MonoBehaviour
         StartCoroutine(LoadVideo());
     }
 
+    /// <summary>
+    /// Stops video
+    /// </summary>
+    public void EndVideo()
+    {
+        FadeManager.Instance.OnFadeBlackFinished -= EndVideo;
+        videoMesh.SetActive(false);
+        videoPlayer.Stop();
+        skipButton.SetActive(false);
+    }
+
+    /// <summary>
+    /// Switch to excavation environment
+    /// </summary>
+    /// <param name="source"></param>
+    public void ReturnToSite(VideoPlayer source)
+    {
+        isVideoTriggered = false;
+        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
+        FadeManager.Instance.OnFadeBlackFinished += EndVideo;
+        FadeManager.Instance.FadeToBlack(true);
+    }
+
+    public void ReturnToSite(InputAction.CallbackContext context)
+    {
+        isVideoTriggered = false;
+        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
+        FadeManager.Instance.OnFadeBlackFinished += EndVideo;
+        FadeManager.Instance.FadeToBlack(true);
+    }
+
+    /// <summary>
+    /// Set video to load
+    /// </summary>
+    /// <param name="path"></param>
+    public void SetVideoPath(string path)
+    {
+        videoPath = path;
+        isVideoTriggered = true;
+    }
+
+    /// <summary>
+    /// Called by the ✕ poke button to stop the video early
+    /// </summary>
+    public void SkipVideo()
+    {
+        if (!videoPlayer.isPlaying)
+        {
+            return;            // ignore pokes during fades or after it already ended
+        }
+        skipButton.SetActive(false);
+        ReturnToSite(videoPlayer);
+    }
+
+    #endregion
+
+    #region Coroutines
     public IEnumerator LoadVideo()
     {
         _VideoHandle = Addressables.LoadAssetAsync<VideoClip>(videoPath);
@@ -105,41 +177,5 @@ public class VideoManager : MonoBehaviour
             videoLoading = false;
         }
     }
-
-    /// <summary>
-    /// Stops video
-    /// </summary>
-    public void EndVideo()
-    {
-        FadeManager.Instance.OnFadeBlackFinished -= EndVideo;
-        videoMesh.SetActive(false);
-        videoPlayer.Stop();
-    }
-
-    /// <summary>
-    /// Switch to excavation environment
-    /// </summary>
-    /// <param name="source"></param>
-    public void ReturnToSite(VideoPlayer source)
-    {
-        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
-        FadeManager.Instance.OnFadeBlackFinished += EndVideo;
-        FadeManager.Instance.FadeToBlack(true);
-    }
-
-    public void ReturnToSite(InputAction.CallbackContext context)
-    {
-        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
-        FadeManager.Instance.OnFadeBlackFinished += EndVideo;
-        FadeManager.Instance.FadeToBlack(true);
-    }
-
-    /// <summary>
-    /// Set video to load
-    /// </summary>
-    /// <param name="path"></param>
-    public void SetVideoPath(string path)
-    {
-        videoPath = path;
-    }
+    #endregion
 }

@@ -17,6 +17,10 @@ public class VideoButtonHelper : MonoBehaviour
     #region Properties
     bool isHovered;
     bool isReleased;
+
+    [Header("Testing")]
+    [SerializeField]
+    bool skipVideoForTesting = false;
     #endregion
 
     #region Monobehaviours
@@ -56,9 +60,40 @@ public class VideoButtonHelper : MonoBehaviour
     /// </summary>
     public void TriggerVideo()
     {
-        //FadeManager.Instance.OnFadeBlackStarted += FadeManager.Instance.HideIndicators;
+        Debug.Log($"[VideoButtonHelper] TriggerVideo called for {name}. videoPath={videoPath}");
+
+
+        if (!skipVideoForTesting && string.IsNullOrEmpty(videoPath))
+        {
+            Debug.LogWarning($"[VideoButtonHelper] {name} has no videoPath assigned.");
+            return;
+        }
         if (string.IsNullOrEmpty(videoPath))
         {
+            Debug.LogWarning($"[VideoButtonHelper] {name} has no videoPath assigned.");
+            return;
+        }
+        if (VideoManager.Instance == null)
+        {
+            // Debug.LogWarning($"[VideoButtonHelper] {name} cannot trigger because VideoManager.Instance is null.");
+            return;
+        }
+        if (VideoManager.Instance.IsVideoTriggered)
+        {
+            Debug.Log($"[VideoButtonHelper] {name} ignored because another video is already triggered.");
+            return;
+        }
+        if (!ArtifactManager.Instance.CanPlay(this))
+        {
+            Debug.Log($"[VideoButtonHelper] {name} cannot play because it was already watched or blocked.");
+            return;
+        }
+
+        Debug.Log($"[VideoButtonHelper] Button pressed: {name}");
+        ArtifactManager.Instance.MarkWatched(this);
+        if (skipVideoForTesting)
+        {
+            Debug.Log($"[VideoButtonHelper] TEST: {name} marked watched, video skipped");
             return;
         }
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;

@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 214911962621283395}
   - component: {fileID: 8391915074773744799}
   m_Layer: 0
-  m_Name: button
+  m_Name: buttonArmband
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

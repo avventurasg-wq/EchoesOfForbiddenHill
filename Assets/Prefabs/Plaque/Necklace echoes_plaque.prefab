@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 2481635223999240546}
   - component: {fileID: 1212021914219087920}
   m_Layer: 0
-  m_Name: button
+  m_Name: buttonNecklace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

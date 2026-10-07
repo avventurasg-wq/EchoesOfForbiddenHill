@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 2743493199346665627}
   - component: {fileID: 1196012229654747413}
   m_Layer: 0
-  m_Name: button
+  m_Name: buttonVase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,6 +922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filler: {fileID: 0}
   videoPath: 
+  skipVideoForTesting: 0
 --- !u!1001 &6625029382649418312
 PrefabInstance:
   m_ObjectHideFlags: 0

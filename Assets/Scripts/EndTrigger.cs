@@ -44,9 +44,9 @@ public class EndTrigger : MonoBehaviour
     #endregion
 
     #region Public Method
-    public void RestartGame()
+    public void EndGame()
     {
-        GameFlowManager.Instance.RestartGame();
+        GameFlowManager.Instance.EndGame();
         //Debug.Log("restart");
     }
     #endregion

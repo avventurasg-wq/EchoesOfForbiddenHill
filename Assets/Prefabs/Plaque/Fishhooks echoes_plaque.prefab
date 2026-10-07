@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 2008768271638223072}
   - component: {fileID: 4353987008924604742}
   m_Layer: 0
-  m_Name: button
+  m_Name: buttonFishhooks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

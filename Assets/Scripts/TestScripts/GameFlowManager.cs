@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+
 #region GameStateEnum
 public enum GameState
 {
@@ -22,6 +23,17 @@ public class GameFlowManager : MonoBehaviour
 {
     #region Singleton
     public static GameFlowManager Instance { get; private set; }
+    #endregion
+
+    #region Serializables
+    [SerializeField]
+    float endWaitSeconds = 30f;
+
+    [SerializeField]
+    float sphereDisplaySeconds = 10f;    // how long the ending sphere is shown
+    [SerializeField]
+    GameObject endingSphere;             // must be in the Manager scene
+    Coroutine endRoutine;
     #endregion
 
     #region State
@@ -94,13 +106,34 @@ public class GameFlowManager : MonoBehaviour
         FadeManager.Instance.FadeToBlack(true);
     }
 
+    public void EndGame()
+    {
+        if (currentState != GameState.Playing)
+        {
+            return;
+        }
+        SetState(GameState.GameOver);
+
+        FadeManager.Instance.OnFadeBlackFinished += OnFadedToBlackForEnd;
+        FadeManager.Instance.FadeToBlack(true);
+    }
     public void RestartGame()
     {
-
+        if (endRoutine != null)
+        {
+            StopCoroutine(endRoutine);
+            endRoutine = null;
+        }
         if (currentState == GameState.MainMenu || currentState == GameState.Loading)
         {
             return;
         }
+
+        if (ArtifactManager.Instance != null)
+        {
+            ArtifactManager.Instance.ResetProgress();
+        }
+
         SetState(GameState.Loading);
         Debug.Log("[Flow] Fade to black finished, reloading");
         FadeManager.Instance.OnFadeBlackFinished += OnFadedToBlackForRestart;
@@ -116,6 +149,11 @@ public class GameFlowManager : MonoBehaviour
     {
         FadeManager.Instance.OnFadeBlackFinished -= OnFadedToBlackForRestart;
         StartCoroutine(ReloadMainScene());
+    }
+    private void OnFadedToBlackForEnd()
+    {
+        FadeManager.Instance.OnFadeBlackFinished -= OnFadedToBlackForEnd;
+        endRoutine = StartCoroutine(EndGameRoutine());
     }
     #endregion
 
@@ -136,6 +174,9 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator ReloadMainScene()
     {
+        endingSphere.SetActive(false);
+        FadeManager.Instance.hiddenEnvironment = null;
+        VideoManager.Instance.ResetVideoState();
         Scene mainScene = SceneManager.GetSceneByBuildIndex(sceneIndex);
         if (mainScene.isLoaded)
         {
@@ -144,6 +185,28 @@ public class GameFlowManager : MonoBehaviour
         }
         yield return StartCoroutine(LoadMainScene());
 
+    }
+
+    IEnumerator EndGameRoutine()
+    {
+        // 1. screen is black → wait
+        yield return new WaitForSeconds(endWaitSeconds);
+
+        // 2. turn off environment, turn on ending sphere
+        FadeManager.Instance.HideEnvironment();
+        endingSphere.SetActive(true);
+
+        // 3. fade in so the player can actually see the sphere
+        FadeManager.Instance.FadeToWhite(true);
+        yield return new WaitForSeconds(sphereDisplaySeconds);
+
+        // 4. THEN reset the game and clear watched state
+        endRoutine = null;
+        if (ArtifactManager.Instance != null)
+        {
+            ArtifactManager.Instance.ResetProgress();
+        }
+        RestartGame();
     }
     #endregion
 }

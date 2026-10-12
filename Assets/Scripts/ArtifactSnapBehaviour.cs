@@ -19,14 +19,15 @@ public class ArtifactSnapBehaviour : MonoBehaviour
     [SerializeField]
     GameObject artifactPanel;
     [SerializeField]
-    TextMeshProUGUI title;
+    TextMeshPro title;
     [SerializeField]
-    TextMeshProUGUI description;
+    TextMeshPro description;
     [SerializeField]
     bool useSilhouette;
     [SerializeField]
     bool showMesh = false;
-
+    [SerializeField]
+    bool panelStartActive = false;
     #endregion
 
     #region Properties
@@ -63,11 +64,11 @@ public class ArtifactSnapBehaviour : MonoBehaviour
 
         snapInteractable = GetComponent<SnapInteractable>();
 
-        artifactPanel.SetActive(false);
-
+        artifactPanel.SetActive(panelStartActive);
         title.text = artifactInfo.ArtifactName;
         description.text = artifactInfo.ArtifactDescription;
         videoPath = artifactInfo.VideoPath;
+        artifactPanel.GetComponentInChildren<VideoButtonHelper>().SetVideoPath(videoPath);
     }
     #endregion
 

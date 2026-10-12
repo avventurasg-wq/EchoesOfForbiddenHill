@@ -13,6 +13,11 @@ public class AVProController : MonoBehaviour
     //[SerializeField]
     //List<VideoClip> videos;
     [SerializeField]
+    private GameObject skipButton;
+    [SerializeField]
+    private GameObject videoMesh;
+
+    [SerializeField]
     List<string> videoAddress;
 
     [SerializeField]
@@ -73,6 +78,25 @@ public class AVProController : MonoBehaviour
         StartCoroutine(LoadVideo(0));
     }
 
+    public void PlayVideo(MediaReference mediaReference)
+    {
+        player.OpenMedia(mediaReference, true);
+    }
+
+    public void VideoEnded()
+    {
+        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
+        FadeManager.Instance.OnFadeBlackFinished += EndVideo;
+        FadeManager.Instance.FadeToBlack(true);
+    }
+
+    public void EndVideo()
+    {
+        FadeManager.Instance.OnFadeBlackFinished -= EndVideo;
+        videoMesh.SetActive(false);
+        //videoPlayer.Stop();
+        skipButton.SetActive(false);
+    }
     public void PlayVideo(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("Button Pressed");

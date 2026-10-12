@@ -98,6 +98,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38612
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.398
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3748338791461304203, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: _pointableElement
@@ -111,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 4605999880493647436, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 470d3dfb-fa07-4560-a046-6e8ca830d183
+      value: e4313d80-7acc-4d97-85ef-18eabbfdcc8d
       objectReference: {fileID: 0}
     - target: {fileID: 5388422188058858687, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 568c4fdf-ea10-4d65-ae74-e03d9dbfd4e5
+      value: fb13a3b2-940d-4543-b3a6-8b663a58669e
       objectReference: {fileID: 0}
     - target: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}

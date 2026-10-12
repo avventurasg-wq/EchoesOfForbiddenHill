@@ -12,7 +12,6 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - APPLY_GAMMA
   - FORCEEYE_NONE
   - LAYOUT_EQUIRECT180
   - MONOSCOPIC
@@ -58,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: -1}
+        m_Scale: {x: 0.5, y: -1}
         m_Offset: {x: 0, y: 1}
     - _MainTex_R:
         m_Texture: {fileID: 0}
@@ -79,7 +78,7 @@ Material:
     m_Ints: []
     m_Floats:
     - ForceEye: 0
-    - Layout: 0
+    - Layout: 1
     - Stereo: 0
     - _ApplyGamma: 0
     - _BumpScale: 1

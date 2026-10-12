@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using RenderHeads.Media.AVProVideo;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
@@ -17,7 +18,15 @@ public class VideoManager : MonoBehaviour
     [SerializeField]
     GameObject videoMesh;
     [SerializeField]
+    GameObject avProVideoMesh;
+    [SerializeField]
+    GameObject hisVideoMesh;
+    [SerializeField]
     VideoPlayer videoPlayer;
+    [SerializeField]
+    MediaPlayer avProPlayer;
+    [SerializeField]
+    HISPlayerVRController hisPlayer;
 
     [SerializeField]
     GameObject skipButton;
@@ -26,6 +35,9 @@ public class VideoManager : MonoBehaviour
     #region Properties
     string videoPath;
     bool videoLoading;
+    MediaReference mediaReference;
+    int videoIndex;
+
 
     bool isVideoTriggered = false;
     public bool IsVideoTriggered => isVideoTriggered;
@@ -74,7 +86,7 @@ public class VideoManager : MonoBehaviour
     /// </summary>
     void PlayVideo()
     {
-        FadeManager.Instance.OnFadeWhiteFinished -= PlayVideo;
+        //FadeManager.Instance.OnFadeWhiteFinished -= PlayVideo;
         videoPlayer.Play();
         skipButton.SetActive(true);
     }
@@ -94,6 +106,45 @@ public class VideoManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Loads video
+    /// </summary>
+    public void StartLoadingAVProVideo()
+    {
+        FadeManager.Instance.OnFadeBlackFinished -= StartLoadingAVProVideo;
+        if (videoLoading)
+        {
+            return;
+        }
+        videoLoading = true;
+        //StartCoroutine(LoadVideo());
+        FadeManager.Instance.FadeToWhite(true);
+        skipButton.SetActive(true);
+        avProVideoMesh.SetActive(true);
+        avProPlayer.OpenMedia(mediaReference, true);
+        videoLoading = false;
+    }
+
+
+    /// <summary>
+    /// Loads video
+    /// </summary>
+    public void StartLoadingHISVideo()
+    {
+        FadeManager.Instance.OnFadeBlackFinished -= StartLoadingHISVideo;
+        if (videoLoading)
+        {
+            return;
+        }
+        videoLoading = true;
+        //StartCoroutine(LoadVideo());
+        FadeManager.Instance.FadeToWhite(true);
+        skipButton.SetActive(true);
+        hisVideoMesh.SetActive(true);
+        hisPlayer.OnSelectPlayback(videoIndex);
+        videoLoading = false;
+    }
+
+    /// <summary>
     /// Stops video
     /// </summary>
     public void EndVideo()
@@ -101,7 +152,22 @@ public class VideoManager : MonoBehaviour
         FadeManager.Instance.OnFadeBlackFinished -= EndVideo;
         videoMesh.SetActive(false);
         videoPlayer.Stop();
+        avProVideoMesh.SetActive(false);
+        avProPlayer.Stop();
+        hisVideoMesh.SetActive(false);
+        hisPlayer.OnStop();
         skipButton.SetActive(false);
+    }
+
+    /// <summary>
+    /// Switch to excavation environment
+    /// </summary>
+    public void ReturnToSite()
+    {
+        isVideoTriggered = false;
+        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.ShowEnvironment;
+        FadeManager.Instance.OnFadeBlackFinished += EndVideo;
+        FadeManager.Instance.FadeToBlack(true);
     }
 
     /// <summary>
@@ -133,18 +199,43 @@ public class VideoManager : MonoBehaviour
         videoPath = path;
         isVideoTriggered = true;
     }
+    
+
+    /// <summary>
+    /// Set AVPro video to load
+    /// </summary>
+    /// <param name="path"></param>
+    public void SetAVProVideo(MediaReference _mediaReference)
+    {
+        mediaReference = _mediaReference;
+        isVideoTriggered = true;
+    }
+
+    /// <summary>
+    /// Set HISPlayer video to load
+    /// </summary>
+    /// <param name="path"></param>
+    public void SetHISVideo(int index)
+    {
+        videoIndex = index;
+        isVideoTriggered = true;
+    }
 
     /// <summary>
     /// Called by the ✕ poke button to stop the video early
     /// </summary>
     public void SkipVideo()
     {
-        if (!videoPlayer.isPlaying)
+        if (videoPlayer.isPlaying)
         {
-            return;            // ignore pokes during fades or after it already ended
+            ReturnToSite(videoPlayer);
+            //return;            // ignore pokes during fades or after it already ended
+        }
+        else if (avProVideoMesh.activeSelf || hisVideoMesh.activeSelf)
+        {
+            ReturnToSite();
         }
         skipButton.SetActive(false);
-        ReturnToSite(videoPlayer);
     }
 
     #endregion
@@ -169,8 +260,9 @@ public class VideoManager : MonoBehaviour
             //}
             videoMesh.SetActive(true);
             videoPlayer.clip = _VideoHandle.Result;
+            PlayVideo();
             FadeManager.Instance.FadeToWhite(true);
-            FadeManager.Instance.OnFadeWhiteFinished += PlayVideo;
+            //FadeManager.Instance.OnFadeWhiteFinished += PlayVideo;
             //yield return new WaitForSeconds(1);
             //player.OpenMedia(_VideoHandle.Result.originalPath);
             //player.Play();

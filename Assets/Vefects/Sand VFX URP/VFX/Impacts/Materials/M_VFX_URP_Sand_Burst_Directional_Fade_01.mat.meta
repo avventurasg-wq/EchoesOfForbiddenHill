@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e38cf1bcf13c6f1429831f1007f47ff8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Impacts/Materials/M_VFX_URP_Sand_Burst_Directional_Fade_01.mat
+  uploadId: 734373

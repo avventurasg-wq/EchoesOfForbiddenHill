@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 49c4857054cc9b3409530980259564c3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/Shared/Shaders/SH_F_VFX_Vefects_Cheap_Contrast.asset
+  uploadId: 734373

@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_VFX_URP_Sand_Burst_Side_Thin_01
+  m_Shader: {fileID: 4800000, guid: 82641b54eb72eb145acd66691c10ca21, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AOAlpha1:
+        m_Texture: {fileID: 2800000, guid: 77782665e40960b4d86a58075139d58b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Flipbook:
+        m_Texture: {fileID: 2800000, guid: 97dbfe4dfb4f0524f8b644e50ced7497, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MDC:
+        m_Texture: {fileID: 2800000, guid: 77782665e40960b4d86a58075139d58b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MotionVector:
+        m_Texture: {fileID: 2800000, guid: c60f9ccc2d6dcec4397ed8d64dd36afd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MotionVectors:
+        m_Texture: {fileID: 2800000, guid: 33a2323915c9a6049841fc5202729276, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OpacityCutout:
+        m_Texture: {fileID: 2800000, guid: d981c863a6701424eb185510d6ea29d0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _CamDepthFadeLength: 1
+    - _CamDepthFadeOffset: 0
+    - _Columns: 8
+    - _Cull1: 2
+    - _CustomTimeFlipbookLerp: 1
+    - _DepthFade: 1
+    - _DepthFadeDistance: 2
+    - _Dst1: 10
+    - _Emission: 0.1
+    - _EncodedMotionIntensity: 0
+    - _EnvironmentReflections: 1
+    - _Erosion: 0
+    - _FlipbookColumns: 8
+    - _FlipbookRows: 8
+    - _FlipbookSpeed: 64
+    - _FlipbookStartFrame: 0
+    - _HorizontalFlip: 0
+    - _LightContribution: 1
+    - _LitBySun: 1
+    - _MVInfluence: 0
+    - _MVOffsetFrame: 1
+    - _MotionIntensity: 0.005
+    - _OpacityCutoutEro: 0
+    - _OpacityCutoutSmoothness: 0.01
+    - _OpacityMultiply: 1
+    - _OpacityPower: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _RotatorDegrees: 1700
+    - _Rows: 8
+    - _SideFadeMax: 1
+    - _SideFadeMin: 0
+    - _SideFadeMultiply: 1
+    - _SideFadeStrength: 0.5
+    - _Smoothness: 0
+    - _Specular: 0
+    - _SpecularHighlights: 1
+    - _Src1: 5
+    - _UseSideFade: 1
+    - _ZTest1: 2
+    - _ZWrite1: 0
+    m_Colors:
+    - _Color01: {r: 1, g: 0.79607844, b: 0.57254905, a: 1}
+    - _Color02: {r: 0.8018868, g: 0.58854055, b: 0.38203096, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RotatorAnchor: {r: 0, g: 0, b: 0, a: 0}
+    - _VTInfoBlock: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

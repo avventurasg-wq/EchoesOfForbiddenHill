@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 592c446b6bef80843bcddcd2f508c578
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Sand Storm/Materials/M_VFX_URP_Lit_MV_Sand_Storm_Cloud_03.mat
+  uploadId: 734373

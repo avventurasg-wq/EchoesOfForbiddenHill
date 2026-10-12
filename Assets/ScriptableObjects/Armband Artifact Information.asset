@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32469a382a1a10f49b457fa79b0a1af4, type: 3}
+  m_Name: Armband Artifact Information
+  m_EditorClassIdentifier: 
+  Index: 0
+  ArtifactName: King
+  ArtifactDescription: "King Iskandar Shah, the last king of Temasek, breaks a sacred
+    oath established by Sang Nila Utama, the kingdom\u2019s founding king. His actions
+    lead to the collapse of his kingdom. Unearthed on Fort Canning Hill, the exquisite
+    gold Kala armlet reflects the wealth and status of the elite who lived in ancient
+    Temasek, a settlement believed to have been ruled by a royal court."
+  VideoPath: King

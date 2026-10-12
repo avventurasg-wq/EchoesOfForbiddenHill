@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6ce679a2466874942b917c71e69cbd1a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265902
+  packageName: Sand VFX - URP
+  packageVersion: 1.0.11
+  assetPath: Assets/Vefects/Sand VFX URP/VFX/Lit Sand Puff/Materials/M_VFX_URP_Lit_MV_Sand_Puff.mat
+  uploadId: 734373

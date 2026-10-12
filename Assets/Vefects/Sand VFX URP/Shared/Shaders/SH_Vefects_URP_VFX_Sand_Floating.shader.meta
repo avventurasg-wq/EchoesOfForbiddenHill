@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 0be45f0b1fdf9464e8d2b341d1acfc5f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Flipbook: {fileID: 2800000, guid: 77782665e40960b4d86a58075139d58b, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

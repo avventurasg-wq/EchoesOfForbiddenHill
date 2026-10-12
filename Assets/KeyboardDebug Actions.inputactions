@@ -1,0 +1,302 @@
+{
+    "name": "KeyboardDebug Actions",
+    "maps": [
+        {
+            "name": "PhysicsTest",
+            "id": "fdd38362-fc98-4a54-a012-b53409f849f3",
+            "actions": [
+                {
+                    "name": "RotateLeft",
+                    "type": "Button",
+                    "id": "f878a7ce-c735-4df4-8782-8ac2aaca5d37",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateRight",
+                    "type": "Button",
+                    "id": "5924fd79-8ff2-40a0-94ad-d4fcbdf517dd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveForward",
+                    "type": "Button",
+                    "id": "126228de-5f3a-4b88-875e-89e9b6de8192",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveBack",
+                    "type": "Button",
+                    "id": "2a456ba4-8dca-4a03-8cc0-1449161d9870",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveLeft",
+                    "type": "Button",
+                    "id": "78c40557-88dd-4452-a507-0911b2917288",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveRight",
+                    "type": "Button",
+                    "id": "e8527352-0498-46ae-96b0-dfabfb784e72",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8b49724d-96ba-40ee-b000-be6285682c75",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "797e66cc-4702-4754-86c5-cf998d870d63",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8fdcdb6f-2764-4321-aafb-8f0419c8b1d7",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78da0291-ec4d-46f7-87f2-fe61ada2cd80",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "269fee31-af43-4e7d-97d2-59fa4a801b98",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de169b88-eaab-41d3-9b7c-7c5fe37c1111",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TeleportPos",
+            "id": "ef132089-c0d0-4854-8b40-04a7b8b5f0fd",
+            "actions": [
+                {
+                    "name": "Teleport0",
+                    "type": "Button",
+                    "id": "640ffbf9-927c-40c0-8195-ebae7c455b6b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport1",
+                    "type": "Button",
+                    "id": "b909d7c6-ada0-4a45-94a3-535933949736",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport2",
+                    "type": "Button",
+                    "id": "4b3b146a-d0d1-425c-a771-b6967cafdd09",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport3",
+                    "type": "Button",
+                    "id": "3cbef931-9ad1-4490-9fb3-7391f1679aa3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport4",
+                    "type": "Button",
+                    "id": "85c0be43-29a0-4ca5-8019-0c58d4f6b96e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport5",
+                    "type": "Button",
+                    "id": "6564bb68-867d-45c8-9dc4-edb0d1c94462",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport6",
+                    "type": "Button",
+                    "id": "7a31dd36-3e4d-49e6-a5ae-150e4ce8c4ce",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Teleport7",
+                    "type": "Button",
+                    "id": "0f192c01-05bf-467c-ac08-b19111d22999",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1f4e0351-d3b9-4014-a066-79dd02f5b687",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd84abfe-86b2-474e-901d-e4d1127ae4bf",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54138c0d-80d5-4341-b19b-6c1be2c28e29",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63195d87-0ad0-4121-828a-11263b1f69fd",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d279a2e2-0fc5-4dbd-a0f1-efddc1121417",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ebf288d8-b32c-4cf6-a22a-81979c18b1d1",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc754596-548b-4e8c-b9a5-de89c699f055",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12091f0f-b763-47ce-81d5-2d2a6e1131cb",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport7",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

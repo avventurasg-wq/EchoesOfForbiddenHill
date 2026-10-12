@@ -1,0 +1,94 @@
+{
+    "name": "Controller Actions",
+    "maps": [
+        {
+            "name": "Debugging",
+            "id": "e1357f95-0a9b-4ee2-956f-79855c9797ce",
+            "actions": [
+                {
+                    "name": "RightPrimaryButtonPress",
+                    "type": "Button",
+                    "id": "fcff0c6f-8510-4e15-b797-d91070804777",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightSecondaryButtonPress",
+                    "type": "Button",
+                    "id": "4a854da1-54cb-4e0e-8f9b-2d3e4a88a643",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightTriggerPress",
+                    "type": "Button",
+                    "id": "62b42fe4-ab92-420e-8ec1-272e680e2403",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightGripPress",
+                    "type": "Button",
+                    "id": "8064fc8a-88b5-41a6-a289-949652b98c0b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "396642d2-c624-4559-81b4-e385dece1836",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPrimaryButtonPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82307c4f-a293-40cd-bc66-ef122e1766d6",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightSecondaryButtonPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43931fad-0775-44c4-9216-4c23f49943c0",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightTriggerPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0ead1c1-3e22-4b74-866d-b79bf39eac42",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGripPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

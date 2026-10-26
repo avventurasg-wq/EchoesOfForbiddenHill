@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: a358de503368b2843bd9eb993f3ad53b, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 73065ac399a07fd42a953a4d0e069115, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -845,7 +845,7 @@ Transform:
   m_GameObject: {fileID: 68953534}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -1.485}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -871,7 +871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &117348566
 Transform:
   m_ObjectHideFlags: 0
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117348565}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9776be407c0b8d74994e4c48708ca02e, type: 3}
   m_Name: 
@@ -948,6 +948,12 @@ MonoBehaviour:
   endWaitSeconds: 5
   sphereDisplaySeconds: 10
   endingSphere: {fileID: 417528921}
+  skipLoadScene: 1
+  _SceneToLoad:
+    m_AssetGUID: 26b6456adf215f043b8b062c71b87584
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &122003062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +2040,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thank you.
+  m_text: Thank you.<br><br>Please raise your hand and wait for the staff to assist
+    you.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3682,7 +3689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &417528922
 Transform:
   m_ObjectHideFlags: 0
@@ -3843,7 +3850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &446921739
 Transform:
   m_ObjectHideFlags: 0
@@ -5038,15 +5045,15 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682672486}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ad9d2799e08aa274bb771a2b416e92b3, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8600000, guid: def706c594719da4c811469df3d15cf8, type: 2}
+  m_TargetTexture: {fileID: 8600000, guid: b7ee91c1224cd184794ff07b1d82f489, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 722432866}
   m_TargetMaterialProperty: 
-  m_RenderMode: 3
+  m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
   m_TimeUpdateMode: 2
@@ -5060,7 +5067,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -5634,7 +5641,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73065ac399a07fd42a953a4d0e069115, type: 2}
+  - {fileID: 2100000, guid: 52f358028f8c4ea4296ad92dd8b49d87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6918,7 +6925,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.03
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -13123,7 +13130,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1.07}
-  m_SizeDelta: {x: 1000, y: 600}
+  m_SizeDelta: {x: 560, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635976896
 MonoBehaviour:
@@ -13596,7 +13603,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 5}
+  m_SizeDelta: {x: 30.4, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1679719488
 MonoBehaviour:
@@ -13681,7 +13688,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 4.6933246, y: -3.529769, z: -14.464341, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -15356,9 +15363,9 @@ MonoBehaviour:
     rawImage: {fileID: 0}
     renderTexture: {fileID: 0}
     url:
-    - https://api.hisplayer.com/media/hisplayer/e0ce2d12-3c4c-4e0a-9dce-be382deadca2/master.m3u8?contentKey=CIaHeHns
+    - https://api.hisplayer.com/media/hisplayer/e0ce2d12-3c4c-4e0a-9dce-be382deadca2/master.m3u8?contentKey=T7QDgPvD
     urlMimeTypes: 
-    autoPlay: 0
+    autoPlay: 1
     loopPlayback: 0
     autoTransition: 0
     unityAudio: 0
@@ -15378,7 +15385,7 @@ MonoBehaviour:
     manifestTimeout: 10000
     segmentsTimeout: 5000
   videoSamples:
-  - https://api.hisplayer.com/media/hisplayer/e0ce2d12-3c4c-4e0a-9dce-be382deadca2/master.m3u8?contentKey=CIaHeHns
+  - https://api.hisplayer.com/media/hisplayer/e0ce2d12-3c4c-4e0a-9dce-be382deadca2/master.m3u8?contentKey=T7QDgPvD
   settingsPanel: {fileID: 1838851207}
   playbackControlsPanel: {fileID: 1561749244}
   playPauseToggle: {fileID: 905074282}
@@ -15543,7 +15550,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 668e515f4993bd84aa2e7e21fc3edbf1, type: 2}
+  - {fileID: 2100000, guid: 52f358028f8c4ea4296ad92dd8b49d87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

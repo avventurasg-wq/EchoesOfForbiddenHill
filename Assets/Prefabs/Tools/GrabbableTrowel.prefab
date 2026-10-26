@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef19d1f5af06ab043882f5a804ba63df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  digSpeed: 0.05
+  digSpeed: 0.2
   sandDisturbance: 0.1
   _leftHandGrabInteractable: {fileID: 7761325930987136383}
   _rightHandGrabInteractable: {fileID: 6130726294215922529}

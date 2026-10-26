@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 
@@ -33,6 +36,11 @@ public class GameFlowManager : MonoBehaviour
     float sphereDisplaySeconds = 10f;    // how long the ending sphere is shown
     [SerializeField]
     GameObject endingSphere;             // must be in the Manager scene
+
+    [Header("Debug")]
+    [SerializeField]
+    bool skipLoadScene;
+
     Coroutine endRoutine;
     #endregion
 
@@ -40,6 +48,14 @@ public class GameFlowManager : MonoBehaviour
     private GameState currentState;
     public GameState CurrentState => currentState;
     #endregion
+
+    public AsyncOperationHandle<SceneInstance> _ScenarioHandle { get; private set; }
+    public AssetReference _SceneToLoad;
+
+    private AsyncOperation _sceneLoading;
+    private bool _isLoading = false;
+
+    private Scene _currentScene;
 
     private int sceneIndex = 1;
 
@@ -58,8 +74,15 @@ public class GameFlowManager : MonoBehaviour
 
     void Start()
     {
-        SetState(GameState.Loading);
-        StartCoroutine(LoadMainScene());
+#if !UNITY_EDITOR
+        skipLoadScene = false;
+#endif
+        if (!skipLoadScene)
+        {
+            SetState(GameState.Loading);
+            StartCoroutine(LoadMainScene());
+        }
+        //BeginAddressableLoad();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -69,7 +92,8 @@ public class GameFlowManager : MonoBehaviour
         {
             SetState(GameState.Playing);
         }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneIndex));
+        SceneManager.SetActiveScene(scene);
 #if UNITY_EDITOR
         DynamicGI.UpdateEnvironment();
 #endif
@@ -78,6 +102,7 @@ public class GameFlowManager : MonoBehaviour
         {
             FadeManager.Instance.FadeToWhite(true);
         }
+        _isLoading = false;
     }
 
     void Update()
@@ -155,7 +180,7 @@ public class GameFlowManager : MonoBehaviour
         FadeManager.Instance.OnFadeBlackFinished -= OnFadedToBlackForEnd;
         endRoutine = StartCoroutine(EndGameRoutine());
     }
-    #endregion
+#endregion
 
     #region Coroutines
     IEnumerator LoadMainScene()
@@ -207,6 +232,28 @@ public class GameFlowManager : MonoBehaviour
             ArtifactManager.Instance.ResetProgress();
         }
         RestartGame();
+    }
+    #endregion
+
+    #region Addressables
+
+    public void LoadAddressableScene(AssetReference _AddressableScene, LoadSceneMode method = LoadSceneMode.Additive)
+    {
+        if (_isLoading)
+        {
+            return;
+        }
+        _isLoading = true;
+        _SceneToLoad = _AddressableScene;
+        BeginAddressableLoad();
+
+    }
+
+    private async void BeginAddressableLoad()
+    {
+        //Load new scene
+        _ScenarioHandle = Addressables.LoadSceneAsync(_SceneToLoad, LoadSceneMode.Additive);
+        await _ScenarioHandle.Task;
     }
     #endregion
 }

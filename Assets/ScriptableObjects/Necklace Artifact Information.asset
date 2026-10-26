@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Necklace Artifact Information
   m_EditorClassIdentifier: 
   Index: 0
-  ArtifactName: Jewellery
+  ArtifactName: Necklace
   ArtifactDescription: Elegant jewellery reveals more than beauty. It reflects cultural
     traditions passed down through generations and tastes that change over time.
   VideoPath: 

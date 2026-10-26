@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hooks Artifact Information
   m_EditorClassIdentifier: 
   Index: 0
-  ArtifactName: Copper
+  ArtifactName: Coins
   ArtifactDescription: The rhythmic sound of copper being forged echoes the strength
     and vitality of the era.
   VideoPath: 

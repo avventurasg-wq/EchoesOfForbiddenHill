@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Oculus.Interaction.HandGrab;
 using UnityEngine;
 
@@ -21,11 +20,6 @@ public class ScoopSand : MonoBehaviour
     float digDepth;
 
     [SerializeField]
-    float uncoverDepth;
-    [SerializeField]
-    bool useArtifactPivot;
-
-    [SerializeField]
     Transform sand;
 
     [SerializeField]
@@ -36,7 +30,6 @@ public class ScoopSand : MonoBehaviour
     Material material;
     float startingY;
     float targetDepth;
-    float releaseDepth;
     #endregion
 
     Action DiscoverArtifact;
@@ -48,14 +41,8 @@ public class ScoopSand : MonoBehaviour
         material = sand.GetComponent<MeshRenderer>().material;
         startingY = transform.parent.position.y;
         targetDepth = startingY - digDepth;
-        releaseDepth = startingY - uncoverDepth;
 
         DiscoverArtifact += CheckArtifact;
-    }
-
-    private void OnEnable()
-    {
-        artifact.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -201,25 +188,12 @@ public class ScoopSand : MonoBehaviour
     /// </summary>
     void CheckArtifact()
     {
-        if (useArtifactPivot)
+        bool inside = GetComponent<Collider>().ClosestPoint(artifact.position) == artifact.position;
+        Debug.Log($"Artifact buried: {inside}");
+        if (!inside)
         {
-            bool inside = GetComponent<Collider>().ClosestPoint(artifact.position) == artifact.position;
-            if (!inside)
-            {
-                artifact.GetComponentInChildren<HandGrabInteractable>().enabled = true;
-                DiscoverArtifact -= CheckArtifact;
-                Debug.Log($"Artifact released: {artifact.name}");
-            }
-        }
-        else
-        {
-            if (transform.parent.position.y < releaseDepth)
-            {
-                artifact.GetComponentInChildren<HandGrabInteractable>().enabled = true;
-                DiscoverArtifact -= CheckArtifact;
-                Debug.Log($"Artifact released: {artifact.name}");
-            }
-
+            artifact.GetComponentInChildren<HandGrabInteractable>().enabled = true;
+            DiscoverArtifact -= CheckArtifact;
         }
     }
     #endregion

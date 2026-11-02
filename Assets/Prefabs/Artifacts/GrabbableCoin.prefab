@@ -91,17 +91,17 @@ PrefabInstance:
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1705703
+      value: 0.19955344
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.07720085
+      value: 0.15569828
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.23051158
+      value: 0.29724637
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -111,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0192
+      value: 0.0072
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -156,12 +156,12 @@ PrefabInstance:
     - target: {fileID: 4605999880493647436, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 367b4729-afe0-4a5e-81a3-c8751353030a
+      value: d5a57cc0-5e8b-4657-b208-f2b51beec8bb
       objectReference: {fileID: 0}
     - target: {fileID: 5388422188058858687, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 93472551-b8a7-4e48-8ee5-366f5c5219ea
+      value: 998bb66b-bede-46e1-8534-16c387579d38
       objectReference: {fileID: 0}
     - target: {fileID: 6764503283109556963, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -172,11 +172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GrabbableCoin
-      objectReference: {fileID: 0}
-    - target: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8004356486972865263, guid: f7a50c04ead91454eadf79750e9e05ae, type: 3}

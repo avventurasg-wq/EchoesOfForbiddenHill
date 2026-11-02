@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using RenderHeads.Media.AVProVideo;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.Video;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class VideoButtonHelper : MonoBehaviour
@@ -12,9 +12,9 @@ public class VideoButtonHelper : MonoBehaviour
     [SerializeField]
     Image filler;
     [SerializeField]
-    VideoClip videoClip;
-    [SerializeField]
     string videoPath;
+    [SerializeField]
+    MediaReference mediaReference;
     [SerializeField]
     int videoIndex;
     #endregion
@@ -61,9 +61,9 @@ public class VideoButtonHelper : MonoBehaviour
 
     #region Public Methods
     /// <summary>
-    /// Trigger event after button is poked
+    /// Trigger event after button is hovered for a duration
     /// </summary>
-    public void TriggerAddressableVideo()
+    public void TriggerVideo()
     {
         Debug.Log($"[VideoButtonHelper] TriggerVideo called for {name}. videoPath={videoPath}");
 
@@ -96,18 +96,14 @@ public class VideoButtonHelper : MonoBehaviour
             Debug.Log($"[VideoButtonHelper] TEST: {name} marked watched, video skipped");
             return;
         }
-        VideoManager.Instance.SetVideoPath(videoPath);
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
-        FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingDataVideo;
-        //FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingAddressableVideo;
+        FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingVideo;
+        VideoManager.Instance.SetVideoPath(videoPath);
         FadeManager.Instance.FadeToBlack(true);
     }
-    /// <summary>
-    /// Trigger event after button is hovered for a duration
-    /// </summary>
-    public void TriggerVideo()
+    public void TriggerAVProVideo()
     {
-        //Debug.Log($"[VideoButtonHelper] TriggerVideo called for {name}. videoPath={videoPath}");
+        Debug.Log($"[VideoButtonHelper] TriggerVideo called for {name}. videoPath={videoPath}");
 
         if (VideoManager.Instance == null)
         {
@@ -127,9 +123,9 @@ public class VideoButtonHelper : MonoBehaviour
 
         ArtifactManager.Instance.MarkWatched(this);
 
-        if (videoClip == null)
+        if (mediaReference == null)
         {
-            Debug.LogWarning($"[VideoButtonHelper] {name} has no videoPath assigned.");
+            Debug.LogWarning($"[VideoButtonHelper] {name} has no mediaReference assigned.");
             return;
         }
         Debug.Log($"[VideoButtonHelper] Button pressed: {name}");
@@ -138,11 +134,51 @@ public class VideoButtonHelper : MonoBehaviour
             Debug.Log($"[VideoButtonHelper] TEST: {name} marked watched, video skipped");
             return;
         }
-        VideoManager.Instance.SetVideoClip(videoClip);
         FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
-        FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingVideo;
+        VideoManager.Instance.SetAVProVideo(mediaReference);
+        FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingAVProVideo;
         FadeManager.Instance.FadeToBlack(true);
     }
+    public void TriggerHISVideo()
+    {
+        Debug.Log($"[VideoButtonHelper] TriggerVideo called for {name}. videoPath={videoPath}");
+
+        if (VideoManager.Instance == null)
+        {
+            // Debug.LogWarning($"[VideoButtonHelper] {name} cannot trigger because VideoManager.Instance is null.");
+            return;
+        }
+        if (VideoManager.Instance.IsVideoTriggered)
+        {
+            Debug.Log($"[VideoButtonHelper] {name} ignored because another video is already triggered.");
+            return;
+        }
+        if (!ArtifactManager.Instance.CanPlay(this))
+        {
+            Debug.Log($"[VideoButtonHelper] {name} cannot play because it was already watched or blocked.");
+            return;
+        }
+
+        ArtifactManager.Instance.MarkWatched(this);
+
+        //if (mediaReference == null)
+        //{
+        //    Debug.LogWarning($"[VideoButtonHelper] {name} has no mediaReference assigned.");
+        //    return;
+        //}
+        Debug.Log($"[VideoButtonHelper] Button pressed: {name}");
+        if (skipVideoForTesting)
+        {
+            Debug.Log($"[VideoButtonHelper] TEST: {name} marked watched, video skipped");
+            return;
+        }
+        FadeManager.Instance.OnFadeBlackFinished += FadeManager.Instance.HideEnvironment;
+        VideoManager.Instance.SetHISVideo(videoIndex);
+        FadeManager.Instance.OnFadeBlackFinished += VideoManager.Instance.StartLoadingHISVideo;
+        FadeManager.Instance.FadeToBlack(true);
+    }
+
+
 
     public void TriggerFilledEvent(InputAction.CallbackContext context)
     {

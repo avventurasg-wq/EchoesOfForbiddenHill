@@ -85,11 +85,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 637e346f61d9573439c315d574821348,
         type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 637e346f61d9573439c315d574821348,
-        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -182,11 +177,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -4321464115315552432, guid: 945c7bf469dac9549a6d545ed0c41658,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: -1853094968961178454, guid: 945c7bf469dac9549a6d545ed0c41658,
         type: 3}
       propertyPath: m_BackGroundColor.a
@@ -211,16 +201,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: echo armband 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 945c7bf469dac9549a6d545ed0c41658,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845368705603915164, guid: 945c7bf469dac9549a6d545ed0c41658,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -252,11 +232,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1841621639715261435, guid: f7a50c04ead91454eadf79750e9e05ae,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1876703527566624039, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -323,11 +298,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1989107595674808154, guid: f7a50c04ead91454eadf79750e9e05ae,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 2652635545050727907, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: _requireTags.Array.data[0]
@@ -341,7 +311,7 @@ PrefabInstance:
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.038393505
+      value: 0.053572085
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -376,37 +346,22 @@ PrefabInstance:
     - target: {fileID: 4605999880493647436, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 557da60f-9937-4b13-8b4b-5078077fd35e
-      objectReference: {fileID: 0}
-    - target: {fileID: 5302019505824863680, guid: f7a50c04ead91454eadf79750e9e05ae,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
+      value: 38461f55-b6b9-4451-8474-c1e169899f8f
       objectReference: {fileID: 0}
     - target: {fileID: 5388422188058858687, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 73dd628e-f88f-407a-8c85-1c18a96c8430
+      value: 243143c4-371e-4531-be04-a495437ee328
       objectReference: {fileID: 0}
     - target: {fileID: 6764503283109556963, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: _timeOut
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 7153422059263013276, guid: f7a50c04ead91454eadf79750e9e05ae,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_Name
       value: GrabbableArmband
-      objectReference: {fileID: 0}
-    - target: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8004356486972865263, guid: f7a50c04ead91454eadf79750e9e05ae, type: 3}

@@ -143,6 +143,13 @@ public class ArtifactManager : MonoBehaviour
         }
 
         Debug.Log($"[ArtifactManager] All {videoWatched.Count} video buttons watched. Activating ladder.");
+        FadeManager.Instance.OnFadeBlackFinished += SpawnLadder;
+        
+    }
+
+    public void SpawnLadder()
+    {
+        FadeManager.Instance.OnFadeBlackFinished -= SpawnLadder;
         if (ladder != null)
         {
             ladder.SetActive(true);

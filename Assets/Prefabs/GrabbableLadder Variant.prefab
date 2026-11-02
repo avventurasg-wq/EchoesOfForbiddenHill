@@ -131,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 4605999880493647436, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: e4313d80-7acc-4d97-85ef-18eabbfdcc8d
+      value: 3f9e6708-b96c-4288-ac67-3a80a06b7e72
       objectReference: {fileID: 0}
     - target: {fileID: 5388422188058858687, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: fb13a3b2-940d-4543-b3a6-8b663a58669e
+      value: 5107fa47-e85a-4101-bb0c-2e1e39ebd780
       objectReference: {fileID: 0}
     - target: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -207,6 +207,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4384669401006390165}
+    - targetCorrespondingSourceObject: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5620737675610945269}
   m_SourcePrefab: {fileID: 100100000, guid: f7a50c04ead91454eadf79750e9e05ae, type: 3}
 --- !u!114 &417740673761168328 stripped
 MonoBehaviour:
@@ -252,6 +256,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handGrabInteractable: {fileID: 3894952452219968798}
   grabInteractable: {fileID: 0}
+--- !u!114 &5620737675610945269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418568697341534350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 3894952452219968798}
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4384669401006390165}
+        m_TargetAssemblyTypeName: EndTrigger, Assembly-CSharp
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &8090356060512528914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8237038792901558407, guid: f7a50c04ead91454eadf79750e9e05ae,

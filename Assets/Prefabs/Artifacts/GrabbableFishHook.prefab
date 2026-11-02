@@ -150,17 +150,17 @@ PrefabInstance:
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.16706699
+      value: 0.14618361
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.07495941
+      value: 0.04775402
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.19980825
+      value: 0.14086422
       objectReference: {fileID: 0}
     - target: {fileID: 3574914361597762983, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -190,12 +190,12 @@ PrefabInstance:
     - target: {fileID: 4605999880493647436, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 9243de55-0ae4-4015-8bdf-88c167962bc2
+      value: e962b303-57e4-4adb-8c9f-bfe3b94a4406
       objectReference: {fileID: 0}
     - target: {fileID: 5388422188058858687, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
       propertyPath: instanceId
-      value: 976241f4-eddd-4f73-9e34-26f3d88bdfc2
+      value: 626fe8e0-db1e-4e8c-8e37-cd34b3acb08b
       objectReference: {fileID: 0}
     - target: {fileID: 6764503283109556963, guid: f7a50c04ead91454eadf79750e9e05ae,
         type: 3}
@@ -206,6 +206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GrabbableFishHook
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277091559795477019, guid: f7a50c04ead91454eadf79750e9e05ae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8004356486972865263, guid: f7a50c04ead91454eadf79750e9e05ae, type: 3}

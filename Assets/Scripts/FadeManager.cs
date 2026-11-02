@@ -40,7 +40,7 @@ public class FadeManager : MonoBehaviour
     #endregion
 
     #region Properties
-    private ColorParameter _colorParameter = null;
+    //private ColorParameter _colorParameter = null;
 
     Coroutine _fadeCoroutine;
     Coroutine _fadeAudioCoroutine;
@@ -68,7 +68,7 @@ public class FadeManager : MonoBehaviour
 
         if (_fadeVolume != null)
         {
-            _fadeVolume.weight = 0f;
+            //_fadeVolume.weight = 1f;
         }
         //_fadeMaterial.color = Color.clear;
         //if (_fadeVolume.profile.TryGet(out ColorAdjustments _colorAdjustments))

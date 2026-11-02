@@ -36,8 +36,15 @@ public class GameFlowManager : MonoBehaviour
     float sphereDisplaySeconds = 10f;    // how long the ending sphere is shown
     [SerializeField]
     GameObject endingSphere;             // must be in the Manager scene
+    [SerializeField]
+    GameObject introPlaque;             // must be in the Manager scene
+    [SerializeField]
+    GameObject managerSceneLight;             // must be in the Manager scene
 
     [Header("Debug")]
+    [SerializeField]
+    Transform playArea;
+
     [SerializeField]
     bool skipLoadScene;
 
@@ -74,14 +81,20 @@ public class GameFlowManager : MonoBehaviour
 
     void Start()
     {
-#if !UNITY_EDITOR
-        skipLoadScene = false;
-#endif
-        if (!skipLoadScene)
-        {
-            SetState(GameState.Loading);
-            StartCoroutine(LoadMainScene());
-        }
+//#if UNITY_EDITOR
+//        if (SceneManager.sceneCount == 1)
+//        {
+//            SetState(GameState.Loading);
+//            StartCoroutine(LoadMainScene());
+//        }
+//        else
+//        {
+//            FadeManager.Instance.FadeToWhite(true);
+//        }
+//#else
+//            SetState(GameState.Loading);
+//            StartCoroutine(LoadMainScene());
+//#endif
         //BeginAddressableLoad();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -154,10 +167,10 @@ public class GameFlowManager : MonoBehaviour
             return;
         }
 
-        if (ArtifactManager.Instance != null)
-        {
-            ArtifactManager.Instance.ResetProgress();
-        }
+        //if (ArtifactManager.Instance != null)
+        //{
+        //    ArtifactManager.Instance.ResetProgress();
+        //}
 
         SetState(GameState.Loading);
         Debug.Log("[Flow] Fade to black finished, reloading");
@@ -168,16 +181,23 @@ public class GameFlowManager : MonoBehaviour
     private void OnFadedToBlackForStart()
     {
         FadeManager.Instance.OnFadeBlackFinished -= OnFadedToBlackForStart;
+        introPlaque.SetActive(false);
+        managerSceneLight.SetActive(false);
         StartCoroutine(LoadMainScene());
     }
     private void OnFadedToBlackForRestart()
     {
         FadeManager.Instance.OnFadeBlackFinished -= OnFadedToBlackForRestart;
-        StartCoroutine(ReloadMainScene());
+        introPlaque.SetActive(true);
+        endingSphere.SetActive(false);
+        SetState(GameState.MainMenu);
+        FadeManager.Instance.FadeToWhite(true);
+        //StartCoroutine(ReloadMainScene());
     }
     private void OnFadedToBlackForEnd()
     {
         FadeManager.Instance.OnFadeBlackFinished -= OnFadedToBlackForEnd;
+        managerSceneLight.SetActive(true);
         endRoutine = StartCoroutine(EndGameRoutine());
     }
 #endregion
@@ -200,15 +220,18 @@ public class GameFlowManager : MonoBehaviour
     IEnumerator ReloadMainScene()
     {
         endingSphere.SetActive(false);
-        FadeManager.Instance.hiddenEnvironment = null;
-        VideoManager.Instance.ResetVideoState();
-        Scene mainScene = SceneManager.GetSceneByBuildIndex(sceneIndex);
-        if (mainScene.isLoaded)
-        {
-            AsyncOperation unload = SceneManager.UnloadSceneAsync(sceneIndex);
-            yield return unload;
-        }
-        yield return StartCoroutine(LoadMainScene());
+        //FadeManager.Instance.hiddenEnvironment = null;
+        //VideoManager.Instance.ResetVideoState();
+        //Scene mainScene = SceneManager.GetSceneByBuildIndex(sceneIndex);
+        //if (mainScene.isLoaded)
+        //{
+        //    AsyncOperation unload = SceneManager.UnloadSceneAsync(sceneIndex);
+        //    yield return unload;
+        //}
+        yield return null;
+        introPlaque.SetActive(true);
+        FadeManager.Instance.FadeToWhite(true);
+        //yield return StartCoroutine(LoadMainScene());
 
     }
 
@@ -218,7 +241,15 @@ public class GameFlowManager : MonoBehaviour
         yield return new WaitForSeconds(endWaitSeconds);
 
         // 2. turn off environment, turn on ending sphere
-        FadeManager.Instance.HideEnvironment();
+        //FadeManager.Instance.HideEnvironment();
+        FadeManager.Instance.hiddenEnvironment = null;
+        VideoManager.Instance.ResetVideoState();
+        Scene mainScene = SceneManager.GetSceneByBuildIndex(sceneIndex);
+        if (mainScene.isLoaded)
+        {
+            AsyncOperation unload = SceneManager.UnloadSceneAsync(sceneIndex);
+            yield return unload;
+        }
         endingSphere.SetActive(true);
 
         // 3. fade in so the player can actually see the sphere
@@ -227,10 +258,10 @@ public class GameFlowManager : MonoBehaviour
 
         // 4. THEN reset the game and clear watched state
         endRoutine = null;
-        if (ArtifactManager.Instance != null)
-        {
-            ArtifactManager.Instance.ResetProgress();
-        }
+        //if (ArtifactManager.Instance != null)
+        //{
+        //    ArtifactManager.Instance.ResetProgress();
+        //}
         RestartGame();
     }
     #endregion
@@ -254,6 +285,20 @@ public class GameFlowManager : MonoBehaviour
         //Load new scene
         _ScenarioHandle = Addressables.LoadSceneAsync(_SceneToLoad, LoadSceneMode.Additive);
         await _ScenarioHandle.Task;
+    }
+    #endregion
+
+    #region Debug Tools
+    public void RotateExperience(bool right)
+    {
+        if (right)
+        {
+            playArea.Rotate(0, 90f, 0);
+        }
+        else
+        {
+            playArea.Rotate(0, -90f, 0);
+        }
     }
     #endregion
 }

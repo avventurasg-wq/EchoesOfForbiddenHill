@@ -68,6 +68,7 @@ public class ScoopSand : MonoBehaviour
             {
                 return;
             }
+            collision.transform.GetComponent<AudioSource>().Play();
             sandParticle.Play();
         }
     }
@@ -82,6 +83,7 @@ public class ScoopSand : MonoBehaviour
             {
                 if (sandParticle.isPlaying)
                 {
+                    collision.transform.GetComponent<AudioSource>().Stop();
                     sandParticle.Stop();
                 }
                 return;
@@ -96,6 +98,7 @@ public class ScoopSand : MonoBehaviour
     {
         if (collision.transform.tag == "Digger")
         {
+            collision.transform.GetComponent<AudioSource>().Stop();
             sandParticle.Stop();
         }
     }
@@ -110,6 +113,7 @@ public class ScoopSand : MonoBehaviour
             {
                 return;
             }
+            other.transform.GetComponent<AudioSource>().Play();
             sandParticle.Play();
         }
     }
@@ -123,6 +127,7 @@ public class ScoopSand : MonoBehaviour
             {
                 if (sandParticle.isPlaying)
                 {
+                    other.transform.GetComponent<AudioSource>().Stop();
                     sandParticle.Stop();
                 }
                 return;
@@ -138,6 +143,7 @@ public class ScoopSand : MonoBehaviour
     {
         if (other.transform.tag == "Digger")
         {
+            other.transform.GetComponent<AudioSource>().Stop();
             sandParticle.Stop();
         }
     }
